@@ -1,23 +1,57 @@
 <?php
 
-if(isset($_POST['submit']))
+if(!empty($_GET['id']))
 {
   
     include_once('config.php');
 
+    $id = $_GET['id'];
+
+    $sqlSelect = "SELECT * FROM medico WHERE id=$id";
+
+    $result = $conexao->query($sqlSelect);
+    
+    if($result->num_rows > 0)
+    {
+
+        while($user_data = mysqli_fetch_assoc($result))
+        {
+            $nome = $user_data['nome'];
+            $crm = $user_data['crm'];
+            $especialidade = $user_data['especialidade'];
+
+        }
+        
+    }
+    
+
+}
+
+?> 
+<?php
+
+if(isset($_POST['submit']))
+{
+  
+    include_once('config.php');
+    $sql = "SELECT * FROM medico";
+
+    $result = $conexao->query($sql);
+
+
+
     $nome = $_POST['nome'];
-    $cpf = $_POST['cpf'];
-    $email = $_POST['email'];      
-    $telefone = $_POST['telefone'];
-    $endereco = $_POST['endereco'];
-    $estado = $_POST['estado'];
-    $cidade = $_POST['cidade'];
-    $bairro = $_POST['bairro'];
+    $data = $_POST['data'];
+    $especialidade = $_POST['especialidade'];      
+    $crm = $_POST['crm'];
+    
    
 
-    $result = mysqli_query($conexao, "INSERT INTO usuario(nome,cpf,email,telefone,endereco,estado,cidade,bairro)
-    VALUES ('$nome','$cpf','$email','$telefone','$endereco','$estado','$cidade','$bairro')");
-    header('location: login.php');
+    $result = mysqli_query($conexao, "INSERT INTO agendamento(nome,data,especialidade,crm)
+    VALUES ('$nome','$data','$especialidade','$crm')");
+    header('location: sistema.php');
+
+    
 }
 
 ?> 
@@ -153,54 +187,33 @@ background-color: #c72e2e;
 </head>
 <body>
 
-
-    <a class="voltar" href="home.php">Voltar</a>
+    <a class="voltar" href="listam.php">Voltar</a>
     <div class="box">
 <form action="cadconsulta.php" method="POST" >
     
         <legend><b>Agendar Consulta</b></legend>
     <br>
+    
     <div class="inputbox">
-        <input type="text" name="nome" id="nome" class="inputUser" required >
-    <label for="nome" class="labelInput">Nome Completo</label>
+        <input type="" name="nome" id="nome" value="<?php echo $nome  ?>" class="inputUser" required >
+    <label for="nome" class="labelInput">Nome</label>
+    </div>
+    <br><br>      
+    <div class="inputbox">
+        <input type="date" name="data" id="data" class="inputUser" required >
+    <label for="data" class="labelInput">Dia</label>
     </div>
     <br><br>
     <div class="inputbox">
-        <input type="text" name="cpf" id="cpf" class="inputUser" required >
-    <label for="cpf" class="labelInput">CPF</label>
+        <input type="" name="especialidade" id="especialidade" value="<?php echo $especialidade  ?>" class="inputUser" required >
+    <label for="especialidade" class="labelInput">Especialidade</label>
     </div>
     <br><br>
     <div class="inputbox">
-        <input type="text" name="email" id="email" class="inputUser" required >
-    <label for="email" class="labelInput">Email</label>
-    </div>
-    <br><br>
-    <div class="inputbox">
-        <input type="tel" name="telefone" id="telefone" class="inputUser" required >
-    <label for="telefone" class="labelInput">Telefone</label>
-    </div>
-    <br><br>
-               
-    <div class="inputbox">
-        <input type="text" name="endereco" id="endereco" class="inputUser" required >
-    <label for="endereco" class="labelInput">Endereço</label>
-    </div>
-    <br><br><br>
-    <div class="inputbox">
-        <input type="text" name="cidade" id="cidade" class="inputUser" required >
-    <label for="cidade" class="labelInput">Cidade</label>
-    </div>
-    <br><br>
-    <div class="inputbox">
-        <input type="text" name="estado" id="estado" class="inputUser" required >
-    <label for="estado" class="labelInput">Estado</label>
+        <input type="text" name="crm" id="crm" value="<?php echo $crm  ?>" class="inputUser" required >
+    <label for="crm" class="labelInput">CRM</label>
     </div>  
-    <br><br>
-    <div class="inputbox">
-        <input type="text" name="bairro" id="bairro" class="inputUser" required >
-    <label for="bairro" class="labelInput">Bairro</label>
-    </div>  
-    <br><br>  
+        
     
     <br><br>
     <input type="submit" name="submit" id="submit" >

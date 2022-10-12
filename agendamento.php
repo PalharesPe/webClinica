@@ -1,6 +1,7 @@
 <?php
 include_once('config.php');
-$sql = "SELECT * FROM medico";
+$sql = "SELECT * FROM agendamento";
+
 
 $result = $conexao->query($sql);
 
@@ -67,6 +68,7 @@ margin-top: 20px;
     }
   .lista{
     position: absolute;
+    padding: 5px;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.3);
     margin-top: 50px;
@@ -110,11 +112,11 @@ background-color: #c72e2e;
   <thead>
     
     <tr>
-      <th scope="col">ID</th>
-      
+      <th scope="col">id</th>      
       <th scope="col">Nome</th>
       <th scope="col">Especialidade</th> 
-      <th scope="col">CRM</th>     
+      <th scope="col">CRM</th>
+      <th scope="col">Data</th>     
     </tr>
     
   </thead>
@@ -125,10 +127,12 @@ background-color: #c72e2e;
         {
         
              echo "<tr>";
+             
              echo "<td>".$user_data['id']."</td>";
              echo "<td>".$user_data['nome']."</td>";
              echo "<td>".$user_data['especialidade']."</td>";
              echo "<td>".$user_data['crm']."</td>";
+             echo "<td>".$user_data['data']."</td>";
              
              echo "<td>
              <a class='btn-ed' btn-sm btn-primary' href='editm.php?id=$user_data[id]'>
@@ -140,10 +144,7 @@ background-color: #c72e2e;
            <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
            <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/>
            </svg>
-           </a>
-           <a class='btn-edit' href='cadconsulta.php?id=$user_data[id]'>
-           Agendar
-           </a>
+           
              </td>";             
              echo "</tr>";
         }
