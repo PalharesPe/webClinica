@@ -1,7 +1,7 @@
-# webClinica
+# WebClinica
  Projeto de Banco de Dados 2022.1
 
-#Para Rodar no Seu Pc
+# Para Rodar no Seu Pc
 1 - Instale o Xampp
 2 - Baixe os arquivos
 3 - Extraia para dentro da pasta htdocs do Xampp
