@@ -157,6 +157,7 @@ echo "<h5> Bem Vindo <u>$logado</u></h5>";
         <li><a href="formulario.php">Cadastrar Usuario</a></li>
         <li><a href="listap.php">Listar Usuarios</a></li>
         <li><a href="listam.php">Listar Médicos</a></li>
+        <li><a href="cadconsulta.php">Cadastrar Consulta</a></li>
     </ul>
 
 </div>

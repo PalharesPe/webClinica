@@ -1,39 +1,23 @@
 <?php
 
-if(!empty($_GET['id']))
+if(isset($_POST['submit']))
 {
   
     include_once('config.php');
 
-    $id = $_GET['id'];
-
-    $sqlSelect = "SELECT * FROM medico WHERE id=$id";
-
-    $result = $conexao->query($sqlSelect);
-    
-    if($result->num_rows > 0)
-    {
-
-        while($user_data = mysqli_fetch_assoc($result))
-        {
-            $nome = $user_data['nome'];            
-            $especialidade = $user_data['especialidade'];
-            $crm = $user_data['crm'];
-            
-
-        }
-        
-    }
-    else
-    {
-        header('Location: listam.php');
-    }
-
-
-
+    $nome = $_POST['nome'];
+    $cpf = $_POST['cpf'];
+    $email = $_POST['email'];      
+    $telefone = $_POST['telefone'];
+    $endereco = $_POST['endereco'];
+    $estado = $_POST['estado'];
+    $cidade = $_POST['cidade'];
+    $bairro = $_POST['bairro'];
    
 
-
+    $result = mysqli_query($conexao, "INSERT INTO usuario(nome,cpf,email,telefone,endereco,estado,cidade,bairro)
+    VALUES ('$nome','$cpf','$email','$telefone','$endereco','$estado','$cidade','$bairro')");
+    header('location: login.php');
 }
 
 ?> 
@@ -168,35 +152,58 @@ background-color: #c72e2e;
     </style>
 </head>
 <body>
-<div class="top">
-    <br>
-<h1>Sistema WebClinca</h1>
-</div>
 
-    <a class="voltar" href="listam.php">Voltar</a>
+
+    <a class="voltar" href="home.php">Voltar</a>
     <div class="box">
-<form action="saveEditarm.php" method="POST" >
+<form action="cadconsulta.php" method="POST" >
     
-        <legend><b> Cadastro de Médico</b></legend>
+        <legend><b>Agendar Consulta</b></legend>
     <br>
     <div class="inputbox">
-        <input type="text" name="nome" id="nome" value="<?php echo $nome  ?>" class="inputUser" required >
-    <label for="nome" class="labelInput">Nome</label>
+        <input type="text" name="nome" id="nome" class="inputUser" required >
+    <label for="nome" class="labelInput">Nome Completo</label>
     </div>
     <br><br>
     <div class="inputbox">
-        <input type="text" name="especialidade" id="especialidade" value="<?php echo $especialidade  ?>" class="inputUser" required >
-    <label for="especialidade" class="labelInput">Especialidade</label>
+        <input type="text" name="cpf" id="cpf" class="inputUser" required >
+    <label for="cpf" class="labelInput">CPF</label>
     </div>
-    <br><br>  
-    <div class="inputbox">
-        <input type="text" name="crm" id="crm" value="<?php echo $crm  ?>" class="inputUser" required >
-    <label for="crm" class="labelInput">CRM</label>
-    </div>
-    <br><br>  
-    <input type="hidden" name="id" value="<?php echo $id  ?>">
     <br><br>
-    <input type="submit" name="update" id="update" >
+    <div class="inputbox">
+        <input type="text" name="email" id="email" class="inputUser" required >
+    <label for="email" class="labelInput">Email</label>
+    </div>
+    <br><br>
+    <div class="inputbox">
+        <input type="tel" name="telefone" id="telefone" class="inputUser" required >
+    <label for="telefone" class="labelInput">Telefone</label>
+    </div>
+    <br><br>
+               
+    <div class="inputbox">
+        <input type="text" name="endereco" id="endereco" class="inputUser" required >
+    <label for="endereco" class="labelInput">Endereço</label>
+    </div>
+    <br><br><br>
+    <div class="inputbox">
+        <input type="text" name="cidade" id="cidade" class="inputUser" required >
+    <label for="cidade" class="labelInput">Cidade</label>
+    </div>
+    <br><br>
+    <div class="inputbox">
+        <input type="text" name="estado" id="estado" class="inputUser" required >
+    <label for="estado" class="labelInput">Estado</label>
+    </div>  
+    <br><br>
+    <div class="inputbox">
+        <input type="text" name="bairro" id="bairro" class="inputUser" required >
+    <label for="bairro" class="labelInput">Bairro</label>
+    </div>  
+    <br><br>  
+    
+    <br><br>
+    <input type="submit" name="submit" id="submit" >
     
     
 
@@ -204,20 +211,7 @@ background-color: #c72e2e;
 </form>
 
  </div>
- <div class="flex">
-<a href="sair.php" class="bnt-danger me-5">Sair</a>
-</div>
-<br>
- <div class="menu">
-    <ul>
-        <li><a href="sistema.php">Home</a></li>
-        <li><a href="cadmedico.php">Cadastrar Médico</a></li>
-        <li><a href="formulario.php">Cadastrar Usuario</a></li>
-        <li><a href="listap.php">Listar Usuarios</a></li>
-        <li><a href="listam.php">Listar Médicos</a></li>
-    </ul>
 
-</div>
 
 </body>
 </html>

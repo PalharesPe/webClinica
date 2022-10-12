@@ -4,16 +4,16 @@ if(isset($_POST['submit']))
 {
   
     include_once('config.php');
-
-    $crm = $_POST['crm'];
+    $nome = $_POST['nome']; 
     $especialidade = $_POST['especialidade'];
+    $crm = $_POST['crm'];
        
     
    
 
-    $result = mysqli_query($conexao, "INSERT INTO medico(crm,especialidade)
-    VALUES ('$crm','$especialidade')");
-    header('location: listam.php');
+    $result = mysqli_query($conexao, "INSERT INTO medico(nome,especialidade,crm)
+    VALUES ('$nome','$especialidade','$crm')");
+    header('location: sistema.php');
 }
 
 ?> 
@@ -160,15 +160,21 @@ background-color: #c72e2e;
         <legend><b> Cadastro de Médico</b></legend>
     <br>
     <div class="inputbox">
-        <input type="text" name="crm" id="crm" class="inputUser" required >
-    <label for="crm" class="labelInput">CRM</label>
+        <input type="text" name="nome" id="nome" class="inputUser" required >
+    <label for="nome" class="labelInput">Nome</label>
     </div>
     <br><br>
     <div class="inputbox">
         <input type="text" name="especialidade" id="especialidade" class="inputUser" required >
     <label for="especialidade" class="labelInput">Especialidade</label>
-    </div>       
+    </div>   
     <br><br>
+    <div class="inputbox">
+        <input type="text" name="crm" id="crm" class="inputUser" required >
+    <label for="crm" class="labelInput">CRM</label>
+    </div>
+    <br><br>
+    
     <input type="submit" name="submit" id="submit" >
      
 
