@@ -4,16 +4,20 @@ if(isset($_POST['submit']))
 {
   
     include_once('config.php');
-    $nome = $_POST['nome']; 
+    $nome = $_POST['nome'];
+    $cpf = $_POST['cpf']; 
     $especialidade = $_POST['especialidade'];
     $crm = $_POST['crm'];
+    $email = $_POST['email'];
+    $sexo = $_POST['sexo'];
+    $telefone = $_POST['telefone'];
        
     
    
 
-    $result = mysqli_query($conexao, "INSERT INTO medico(nome,especialidade,crm)
-    VALUES ('$nome','$especialidade','$crm')");
-    header('location: sistema.php');
+    $result = mysqli_query($conexao, "INSERT INTO medico(nome,cpf,especialidade,crm,email,sexo,telefone)
+    VALUES ('$nome','$cpf','$especialidade','$crm','$email','$sexo','$telefone')");
+    header('location: listam.php');
 }
 
 ?> 
@@ -55,18 +59,11 @@ legend {
 /*
 .inputbox{
     position: relative;
-}
+}*/
 .inputUser {
-    background: none;
-    border: none;
-    border-bottom: 1px solid white;
     outline: none;
-    color: white;
-    font-size: 15px;
-    width: 100%;
-    letter-spacing: 2px;
 }
-*/
+
 p{
     color: white;
 }
@@ -94,7 +91,7 @@ label{
     }
 .top{
     
-    margin: -21px;
+    margin-top: -8px;
     width: auto;
     height: 100px;
     background-color: #c7c7c7;
@@ -106,7 +103,7 @@ margin-top: 20px;
 }
 .menu {
     position: absolute;
-    margin-top: -4px;
+    margin-top: -25px;
     background-color: #1891a3;
     width: 1024px;
     height: 50px;
@@ -160,23 +157,66 @@ background-color: #c72e2e;
         <legend><b> Cadastro de Médico</b></legend>
     <br>
     <div class="inputbox">
+    <label for="nome" class="labelInput">Nome Completo</label>
         <input type="text" name="nome" id="nome" class="inputUser" required >
-    <label for="nome" class="labelInput">Nome</label>
-    </div>
-    <br><br>
-    <div class="inputbox">
-        <input type="text" name="especialidade" id="especialidade" class="inputUser" required >
-    <label for="especialidade" class="labelInput">Especialidade</label>
-    </div>   
-    <br><br>
-    <div class="inputbox">
-        <input type="text" name="crm" id="crm" class="inputUser" required >
-    <label for="crm" class="labelInput">CRM</label>
-    </div>
-    <br><br>
     
+    </div>
+    <br>
+    <div class="inputbox">
+    <label for="especialidade" class="labelInput">Especialidade</label>
+        <input type="text" name="especialidade" id="especialidade" class="inputUser" required >
+     </div>
+    <br>
+    <div class="inputbox">
+    <label for="cpf" class="labelInput">CPF</label>
+        <input type="text" name="cpf" id="cpf" class="inputUser" required >
+    
+    </div>    
+    <br>
+    <div class="inputbox">
+    <label for="crm" class="labelInput">CRM</label>
+        <input type="text" name="crm" id="crm" class="inputUser" required >
+    
+    </div>
+    <br>
+    
+    <div class="inputbox">
+    <label for="email" class="labelInput">Email</label>
+        <input type="text" name="email" id="email" class="inputUser" required >
+    
+    </div>
+       
+    <p>Genero:</p>
+    <input type="radio" id="feminino" name="sexo" value="feminino" required>
+    <label for="feminino">Feminino</label>
+    <br>
+    <input type="radio" id="masculino" name="sexo" value="masculino" required>
+    <label for="masculino">Masculino</label>
+    <br>
+    <input type="radio" id="outro" name="sexo" value="outro" required>
+    <label for="outro">Outro</label>
+    <br><br>
+    <div class="inputbox">
+    <label for="telefone" class="labelInput">Telefone</label>
+        <input type="tel" name="telefone" id="telefone" class="inputUser" required >
+    
+    </div>
+    <br>
+    
+    <div class="inputbox">
+    <label for="estado" class="labelInput">Estado</label>
+        <input type="text" name="estado" id="estado" class="inputUser" required >    
+    </div> 
+    <br>
+    <div class="inputbox">
+    <label for="cidade" class="labelInput">Cidade</label>
+        <input type="text" name="cidade" id="cidade" class="inputUser" required >    
+    </div>    
+    <br>      
+    <br>
     <input type="submit" name="submit" id="submit" >
-     
+    
+    
 
 
 </form>
@@ -193,6 +233,7 @@ background-color: #c72e2e;
         <li><a href="formulario.php">Cadastrar Usuario</a></li>
         <li><a href="listap.php">Listar Usuarios</a></li>
         <li><a href="listam.php">Listar Médicos</a></li>
+        <li><a href="agendamento.php">Agendamento</a
     </ul>
 
 </div>

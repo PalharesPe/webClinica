@@ -1,13 +1,13 @@
 <?php
 
-if(!empty($_GET['id']))
+if(!empty($_GET['id_u']))
 {
   
     include_once('config.php');
 
-    $id = $_GET['id'];
+    $id_u = $_GET['id_u'];
 
-    $sqlSelect = "SELECT * FROM usuario WHERE id=$id";
+    $sqlSelect = "SELECT * FROM usuario WHERE id_u=$id_u";
 
     $result = $conexao->query($sqlSelect);
     
@@ -18,7 +18,9 @@ if(!empty($_GET['id']))
         {
             $nome = $user_data['nome'];
             $cpf = $user_data['cpf'];
-            $email = $user_data['email'];      
+            $sexo = $user_data['sexo'];
+            $email = $user_data['email']; 
+            $senha = $user_data['senha'];     
             $telefone = $user_data['telefone'];
             $endereco = $user_data['endereco'];
             $estado = $user_data['estado'];
@@ -138,50 +140,77 @@ margin-top: 20px;
     <a class="voltar" href="sistema.php">Voltar</a>
     <div class="box">
 <form action="saveEditar.php" method="POST" >
-    
+    <legend>Editar Cadastro</legend>
     <br>
     <div class="inputbox">
-        <input type="text" name="nome" id="nome" value="<?php echo $nome  ?>" class="inputUser" required >
     <label for="nome" class="labelInput">Nome Completo</label>
+        <input type="text" name="nome" id="nome" value="<?php echo $nome  ?>" class="inputUser" required >
+    
     </div>
-    <br><br>
+    <br>
     <div class="inputbox">
-        <input type="text" name="cpf" id="cpf" value="<?php echo $cpf  ?>" class="inputUser" required >
     <label for="cpf" class="labelInput">CPF</label>
+        <input type="text" name="cpf" id="cpf" value="<?php echo $cpf  ?>" class="inputUser" required >
+    
     </div>
+    
+    <p>Genero:</p>
+    <input type="radio" id="feminino" name="sexo" value="feminino" <?php echo $sexo == 'feminino' ? 'checked' : '' ?> required>
+    <label for="feminino">Feminino</label>
+    <br>
+    <input type="radio" id="masculino" name="sexo" value="masculino" <?php echo $sexo == 'masculino' ? 'checked' : '' ?> required>
+    <label for="masculino">Masculino</label>
+    <br>
+    <input type="radio" id="outro" name="sexo" value="outro" <?php echo $sexo == 'outro' ? 'checked' : '' ?> required>
+    <label for="outro">Outro</label>
     <br><br>
+
+
+
     <div class="inputbox">
-        <input type="text" name="email" id="email" value="<?php echo $email  ?>" class="inputUser" required >
     <label for="email" class="labelInput">Email</label>
+        <input type="text" name="email" id="email" value="<?php echo $email  ?>" class="inputUser" required >
+    
     </div>
-    <br><br>
+    <br>
     <div class="inputbox">
-        <input type="tel" name="telefone" id="telefone" value="<?php echo $telefone  ?>" class="inputUser" required >
-    <label for="telefone" class="labelInput">Telefone</label>
+    <label for="senha" class="labelInput">Senha</label>
+        <input type="password" name="senha" id="senha" value="<?php echo $senha  ?>" class="inputUser" required >
+    
     </div>
-    <br><br>
+    <br>
+    <div class="inputbox">
+    <label for="telefone" class="labelInput">Telefone</label>
+        <input type="tel" name="telefone" id="telefone" value="<?php echo $telefone  ?>" class="inputUser" required >
+    
+    </div>
+    <br>
                
     <div class="inputbox">
-        <input type="text" name="endereco" id="endereco" value="<?php echo $endereco  ?>" class="inputUser" required >
     <label for="endereco" class="labelInput">Endereço</label>
+        <input type="text" name="endereco" id="endereco" value="<?php echo $endereco  ?>" class="inputUser" required >
+    
     </div>
-    <br><br><br>
+    <br>
     <div class="inputbox">
-        <input type="text" name="cidade" id="cidade" value="<?php echo $cidade  ?>" class="inputUser" required >
     <label for="cidade" class="labelInput">Cidade</label>
+        <input type="text" name="cidade" id="cidade" value="<?php echo $cidade  ?>" class="inputUser" required >
+    
     </div>
-    <br><br>
+    <bR>
     <div class="inputbox">
-        <input type="text" name="estado" id="estado" value="<?php echo $estado  ?>" class="inputUser" required >
     <label for="estado" class="labelInput">Estado</label>
+        <input type="text" name="estado" id="estado" value="<?php echo $estado  ?>" class="inputUser" required >
+    
     </div>  
-    <br><br>
+    <br>
     <div class="inputbox">
-        <input type="text" name="bairro" id="bairro" value="<?php echo $bairro  ?>" class="inputUser" required >
     <label for="bairro" class="labelInput">Bairro</label>
+        <input type="text" name="bairro" id="bairro" value="<?php echo $bairro  ?>" class="inputUser" required >
+    
     </div>  
-    <br><br>  
-    <input type="hidden" name="id" value="<?php echo $id  ?>">
+    <br> 
+    <input type="hidden" name="id" value="<?php echo $id_u  ?>">
     <br><br>
     <input type="submit" name="update" id="update" >
     

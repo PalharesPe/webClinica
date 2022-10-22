@@ -1,13 +1,13 @@
 <?php
 
-if(!empty($_GET['id']))
+if(!empty($_GET['id_m']))
 {
   
     include_once('config.php');
 
-    $id = $_GET['id'];
+    $id_m = $_GET['id_m'];
 
-    $sqlSelect = "SELECT * FROM medico WHERE id=$id";
+    $sqlSelect = "SELECT * FROM medico WHERE id_m=$id_m";
 
     $result = $conexao->query($sqlSelect);
     
@@ -49,7 +49,7 @@ if(isset($_POST['submit']))
 
     $result = mysqli_query($conexao, "INSERT INTO agendamento(nome,data,especialidade,crm)
     VALUES ('$nome','$data','$especialidade','$crm')");
-    header('location: sistema.php');
+    header('location: agendamento.php');
 
     
 }
@@ -183,6 +183,9 @@ margin-top: 20px;
 .bnt-danger:hover{
 background-color: #c72e2e;
 }
+.inputUser{
+    outline: none;
+}
     </style>
 </head>
 <body>
@@ -195,27 +198,23 @@ background-color: #c72e2e;
     <br>
     
     <div class="inputbox">
-        <input type="" name="nome" id="nome" value="<?php echo $nome  ?>" class="inputUser" required >
-    <label for="nome" class="labelInput">Nome</label>
-    </div>
-    <br><br>      
-    <div class="inputbox">
-        <input type="date" name="data" id="data" class="inputUser" required >
-    <label for="data" class="labelInput">Dia</label>
-    </div>
-    <br><br>
-    <div class="inputbox">
-        <input type="" name="especialidade" id="especialidade" value="<?php echo $especialidade  ?>" class="inputUser" required >
-    <label for="especialidade" class="labelInput">Especialidade</label>
-    </div>
-    <br><br>
-    <div class="inputbox">
-        <input type="text" name="crm" id="crm" value="<?php echo $crm  ?>" class="inputUser" required >
-    <label for="crm" class="labelInput">CRM</label>
-    </div>  
-        
+    <label for="nome" class="labelInput">Médico</label>
+        <input type="" name="nome" id="nome" value="<?php echo $nome  ?>" readonly class="inputUser" required >
     
-    <br><br>
+    </div>
+    <br>    
+    <div class="inputbox">
+    <label for="especialidade" class="labelInput">Especialidade</label>
+        <input type="" name="especialidade" id="especialidade" value="<?php echo $especialidade  ?>" readonly class="inputUser" required >
+    
+    </div>      
+    <br>
+    <div class="inputbox">
+    <label for="data" class="labelInput">Datada Consulta </label>
+        <input type="date" name="data" id="data" class="inputUser"  required >
+    </div>
+    <br>    
+    <br>
     <input type="submit" name="submit" id="submit" >
     
     

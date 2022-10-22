@@ -1,13 +1,13 @@
 <?php
 
-if(!empty($_GET['id']))
+if(!empty($_GET['id_m']))
 {
   
     include_once('config.php');
 
-    $id = $_GET['id'];
+    $id_m = $_GET['id_m'];
 
-    $sqlSelect = "SELECT * FROM medico WHERE id=$id";
+    $sqlSelect = "SELECT * FROM medico WHERE id_m=$id_m";
 
     $result = $conexao->query($sqlSelect);
     
@@ -17,9 +17,12 @@ if(!empty($_GET['id']))
         while($user_data = mysqli_fetch_assoc($result))
         {
             $nome = $user_data['nome'];            
+            $cpf = $user_data['cpf'];
             $especialidade = $user_data['especialidade'];
             $crm = $user_data['crm'];
-            
+            $email = $user_data['email'];
+            $sexo = $user_data['sexo'];
+            $telefone = $user_data['telefone'];
 
         }
         
@@ -28,11 +31,6 @@ if(!empty($_GET['id']))
     {
         header('Location: listam.php');
     }
-
-
-
-   
-
 
 }
 
@@ -64,10 +62,10 @@ fieldset{
     border: 3px solid #1891a3;
 }
 legend {
-    border: 1px solid #1891a3;
+    border: 1px solid rgb(18, 163, 55);
     padding: 10px;
     text-align: center;
-    background-color: #1891a3;
+    background-color: rgb(18, 129, 46);
     border-radius: 8px;
     color: white;
 
@@ -177,25 +175,57 @@ background-color: #c72e2e;
     <div class="box">
 <form action="saveEditarm.php" method="POST" >
     
-        <legend><b> Cadastro de Médico</b></legend>
+<legend>Editar Cadastro</legend>
     <br>
     <div class="inputbox">
-        <input type="text" name="nome" id="nome" value="<?php echo $nome  ?>" class="inputUser" required >
     <label for="nome" class="labelInput">Nome</label>
+        <input type="text" name="nome" id="nome" value="<?php echo $nome  ?>" class="inputUser" required >
+    
     </div>
     <br><br>
     <div class="inputbox">
-        <input type="text" name="especialidade" id="especialidade" value="<?php echo $especialidade  ?>" class="inputUser" required >
+    <label for="cpf" class="labelInput">CPF</label>
+        <input type="text" name="cpf" id="cpf" value="<?php echo $cpf  ?>" class="inputUser" required >
+    
+    </div>
+    <p>Genero:</p>
+    <input type="radio" id="feminino" name="sexo" value="feminino" <?php echo $sexo == 'feminino' ? 'checked' : '' ?> required>
+    <label for="feminino">Feminino</label>
+    <br>
+    <input type="radio" id="masculino" name="sexo" value="masculino" <?php echo $sexo == 'masculino' ? 'checked' : '' ?> required>
+    <label for="masculino">Masculino</label>
+    <br>
+    <input type="radio" id="outro" name="sexo" value="outro" <?php echo $sexo == 'outro' ? 'checked' : '' ?> required>
+    <label for="outro">Outro</label>
+    
+    <br><br> 
+    <div class="inputbox">
     <label for="especialidade" class="labelInput">Especialidade</label>
+        <input type="text" name="especialidade" id="especialidade" value="<?php echo $especialidade  ?>" class="inputUser" required >
+    
     </div>
-    <br><br>  
+    <br>
     <div class="inputbox">
-        <input type="text" name="crm" id="crm" value="<?php echo $crm  ?>" class="inputUser" required >
     <label for="crm" class="labelInput">CRM</label>
+        <input type="text" name="crm" id="crm" value="<?php echo $crm  ?>" class="inputUser" required >
+    
     </div>
-    <br><br>  
-    <input type="hidden" name="id" value="<?php echo $id  ?>">
-    <br><br>
+    <br>
+    <div class="inputbox">
+    <label for="email" class="labelInput">Email</label>
+        <input type="text" name="email" id="email" value="<?php echo $email  ?>" class="inputUser" required >
+    
+    </div>
+    <br>
+    
+    <div class="inputbox">
+    <label for="telefone" class="labelInput">Telefone</label>
+        <input type="text" name="telefone" id="telefone" value="<?php echo $telefone  ?>" class="inputUser" required >
+    
+    </div>
+    <br> 
+    <input type="hidden" name="id" value="<?php echo $id_m  ?>">
+    <br>
     <input type="submit" name="update" id="update" >
     
     

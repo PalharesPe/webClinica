@@ -7,7 +7,9 @@ if(isset($_POST['submit']))
 
     $nome = $_POST['nome'];
     $cpf = $_POST['cpf'];
-    $email = $_POST['email'];      
+    $sexo = $_POST['sexo'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];      
     $telefone = $_POST['telefone'];
     $endereco = $_POST['endereco'];
     $estado = $_POST['estado'];
@@ -15,9 +17,9 @@ if(isset($_POST['submit']))
     $bairro = $_POST['bairro'];
    
 
-    $result = mysqli_query($conexao, "INSERT INTO usuario(nome,cpf,email,telefone,endereco,estado,cidade,bairro)
-    VALUES ('$nome','$cpf','$email','$telefone','$endereco','$estado','$cidade','$bairro')");
-    header('location: sistema.php');
+    $result = mysqli_query($conexao, "INSERT INTO usuario(nome,cpf,sexo,email,senha,telefone,endereco,estado,cidade,bairro)
+    VALUES ('$nome','$cpf','$sexo','$email','$senha','$telefone','$endereco','$estado','$cidade','$bairro')");
+    header('location: formulario.php');
 }
 
 ?> 
@@ -56,6 +58,9 @@ legend {
     color: white;
 
 }
+.inputUser{
+    outline: none;
+}
 /*
 .inputbox{
     position: relative;
@@ -91,14 +96,14 @@ label{
     background-color: #1aa5ba;
 }
 .voltar{
-      
+      margin-top: -10;
       color: white;
       font-family: 'Times New Roman', Times, serif;
       text-decoration: none;
     }
 .top{
     
-    margin: -21px;
+    margin-top: -8px;
     width: auto;
     height: 100px;
     background-color: #c7c7c7;
@@ -110,7 +115,7 @@ margin-top: 20px;
 }
 .menu {
     position: absolute;
-    margin-top: -4px;
+    margin-top: -25px;
     background-color: #1891a3;
     width: 1024px;
     height: 50px;
@@ -161,50 +166,71 @@ background-color: #c72e2e;
     <div class="box">
 <form action="formulario.php" method="POST" >
     
-        <legend><b> Cadastro de Usuário</b></legend>
+        <legend><b> Cadastro de Paciente</b></legend>
     <br>
     <div class="inputbox">
-        <input type="text" name="nome" id="nome" class="inputUser" required >
     <label for="nome" class="labelInput">Nome Completo</label>
-    </div>
-    <br><br>
-    <div class="inputbox">
-        <input type="text" name="cpf" id="cpf" class="inputUser" required >
-    <label for="cpf" class="labelInput">CPF</label>
-    </div>
-    <br><br>
-    <div class="inputbox">
-        <input type="text" name="email" id="email" class="inputUser" required >
-    <label for="email" class="labelInput">Email</label>
-    </div>
-    <br><br>
-    <div class="inputbox">
-        <input type="tel" name="telefone" id="telefone" class="inputUser" required >
-    <label for="telefone" class="labelInput">Telefone</label>
-    </div>
-    <br><br>
-               
-    <div class="inputbox">
-        <input type="text" name="endereco" id="endereco" class="inputUser" required >
-    <label for="endereco" class="labelInput">Endereço</label>
-    </div>
-    <br><br><br>
-    <div class="inputbox">
-        <input type="text" name="cidade" id="cidade" class="inputUser" required >
-    <label for="cidade" class="labelInput">Cidade</label>
-    </div>
-    <br><br>
-    <div class="inputbox">
-        <input type="text" name="estado" id="estado" class="inputUser" required >
-    <label for="estado" class="labelInput">Estado</label>
-    </div>  
-    <br><br>
-    <div class="inputbox">
-        <input type="text" name="bairro" id="bairro" class="inputUser" required >
-    <label for="bairro" class="labelInput">Bairro</label>
-    </div>  
-    <br><br>  
+        <input type="text" name="nome" id="nome" class="inputUser" required >
     
+    </div>
+    <br>
+    <div class="inputbox">
+    <label for="cpf" class="labelInput">CPF</label>
+        <input type="text" name="cpf" id="cpf" class="inputUser" required >
+    
+    </div>
+    <br>
+    <div class="inputbox">
+    <label for="email" class="labelInput">Email</label>
+        <input type="text" name="email" id="email" class="inputUser" required >
+    
+    </div>
+    <br>
+    <div class="inputbox">
+    <label for="senha" class="labelInput">Senha</label>
+        <input type="password" name="senha" id="senha" class="inputUser" required >
+    
+    </div>
+    
+    <p>Genero:</p>
+    <input type="radio" id="feminino" name="sexo" value="feminino" required>
+    <label for="feminino">Feminino</label>
+    <br>
+    <input type="radio" id="masculino" name="sexo" value="masculino" required>
+    <label for="masculino">Masculino</label>
+    <br>
+    <input type="radio" id="outro" name="sexo" value="outro" required>
+    <label for="outro">Outro</label>
+    <br><br>
+    <div class="inputbox">
+    <label for="telefone" class="labelInput">Telefone</label>
+        <input type="tel" name="telefone" id="telefone" class="inputUser" required >
+    
+    </div>
+    <br>               
+    <div class="inputbox">
+    <label for="endereco" class="labelInput">Endereço</label>
+        <input type="text" name="endereco" id="endereco" class="inputUser" required >
+    
+    </div>
+    <br>
+    <div class="inputbox">
+    <label for="cidade" class="labelInput">Cidade</label>
+        <input type="text" name="cidade" id="cidade" class="inputUser" required >
+    
+    </div>
+    <br>
+    <div class="inputbox">
+    <label for="estado" class="labelInput">Estado</label>
+        <input type="text" name="estado" id="estado" class="inputUser" required >
+    
+    </div>  
+    <br>
+    <div class="inputbox">
+    <label for="bairro" class="labelInput">Bairro</label>
+        <input type="text" name="bairro" id="bairro" class="inputUser" required >
+   
+    </div>  
     <br><br>
     <input type="submit" name="submit" id="submit" >
     
@@ -225,6 +251,7 @@ background-color: #c72e2e;
         <li><a href="formulario.php">Cadastrar Usuario</a></li>
         <li><a href="listap.php">Listar Usuarios</a></li>
         <li><a href="listam.php">Listar Médicos</a></li>
+        <li><a href="agendamento.php">Agendamento</a
     </ul>
 
 </div>

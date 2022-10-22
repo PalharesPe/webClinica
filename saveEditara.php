@@ -4,7 +4,7 @@ include_once('config.php');
 
 if(isset($_POST['update']))
 {
-    $id_m = $_POST['id_m'];
+    $id = $_POST['id_a'];
     $nome = $_POST['nome'];
     $cpf = $_POST['cpf'];
     $crm = $_POST['crm'];
@@ -15,11 +15,11 @@ if(isset($_POST['update']))
     
 
     $sqlUpdate = "UPDATE medico SET nome='$nome',cpf='$cpf',crm='$crm',especialidade='$especialidade',email='$email',sexo='$sexo',telefone='$telefone'
-    WHERE id_m='$id_m'";
+    WHERE id_a='$id_a'";
 
     $result = $conexao->query($sqlUpdate);
 
 }
-header('Location: listam.php');
+header('Location: agendamento.php');
 
 ?>

@@ -27,7 +27,7 @@ $result = $conexao->query($sql);
     }
     .top{
     
-    margin: -21px;
+    margin-top: -8px;
     width: auto;
     height: 100px;
     background-color: #c7c7c7;
@@ -41,7 +41,7 @@ margin-top: 20px;
     
 .menu {
     position: absolute;
-    margin-top: -22px;
+    margin-top: -43px;
     background-color: #1891a3;
     width: 1024px;
     height: 50px;
@@ -66,24 +66,24 @@ margin-top: 20px;
         color: #144a52;
     }
   .lista{
+    padding: 10px;
     position: absolute;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.3);
-    margin-top: 50px;
+    margin-top: -200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
   }
-  .btn-del{
-    color: #911a16;
+  .btn{
+    text-decoration: none;
+   margin-left: 4px;
+    color: white;
   }
-  .btn-ed{
-    color: #169168;
-  }
-  .btn-edit{
-text-decoration: none;
-color: white;
-  }
+  
   .bnt-danger{
     text-decoration: none;
-    color: red;
+    color: white;
     padding: 3px;
     border-radius: 5px;
     background-color: red;
@@ -110,10 +110,12 @@ background-color: #c72e2e;
   <thead>
     
     <tr>
-      <th scope="col">ID</th>
-      
       <th scope="col">Nome</th>
+      <th></th>
+      
       <th scope="col">Especialidade</th> 
+      <th></th>
+      
       <th scope="col">CRM</th>     
     </tr>
     
@@ -125,24 +127,29 @@ background-color: #c72e2e;
         {
         
              echo "<tr>";
-             echo "<td>".$user_data['id']."</td>";
-             echo "<td>".$user_data['nome']."</td>";
+             echo "<td>Dr. ".$user_data['nome']."</td>";
+             
+             echo "<td>"."</td>";
              echo "<td>".$user_data['especialidade']."</td>";
+             echo "<td>"."</td>";
              echo "<td>".$user_data['crm']."</td>";
+             echo "<td>"."</td>";
              
              echo "<td>
-             <a class='btn-ed' btn-sm btn-primary' href='editm.php?id=$user_data[id]'>
+             <a class='btn' href='editm.php?id_m=$user_data[id_m]'>
              <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-fill' viewBox='0 0 16 16'>
              <path d='M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z'/>
            </svg>
            </a>
-             <a class='btn-del' btn-sm btn-danger' href='deletem.php?id=$user_data[id]'>
+             <a class='btn' href='deletem.php?id_m=$user_data[id_m]'>
            <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
            <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/>
            </svg>
            </a>
-           <a class='btn-edit' href='cadconsulta.php?id=$user_data[id]'>
-           Agendar
+           <a class='btn' href='cadconsulta.php?id_m=$user_data[id_m]'>
+           <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-calendar-day-fill' viewBox='0 0 16 16'>
+  <path d='M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16v9zm-4.785-6.145a.428.428 0 1 0 0-.855.426.426 0 0 0-.43.43c0 .238.192.425.43.425zm.336.563h-.672v4.105h.672V8.418zm-6.867 4.105v-2.3h2.261v-.61H4.684V7.801h2.464v-.61H4v5.332h.684zm3.296 0h.676V9.98c0-.554.227-1.007.953-1.007.125 0 .258.004.329.015v-.613a1.806 1.806 0 0 0-.254-.02c-.582 0-.891.32-1.012.567h-.02v-.504H7.98v4.105z'/>
+</svg>
            </a>
              </td>";             
              echo "</tr>";
@@ -162,6 +169,7 @@ background-color: #c72e2e;
         <li><a href="formulario.php">Cadastrar Usuario</a></li>
         <li><a href="listap.php">Listar Usuarios</a></li>
         <li><a href="listam.php">Listar Médicos</a></li>
+        <li><a href="agendamento.php">Agendamento</a
     </ul>
 
 </div>

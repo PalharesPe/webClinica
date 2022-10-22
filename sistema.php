@@ -86,8 +86,8 @@ background-color: #c72e2e;
 }
 .top{
     
-    margin: -21px;
-    width: auto;
+    margin-top: -8px;
+    width: 100%;
     height: 100px;
     background-color: #c7c7c7;
 }
@@ -99,11 +99,11 @@ margin-top: 20px;
 
 .menu {
     position: absolute;
-    margin-top: -4px;
+    margin-top: -25px;
     background-color: #1891a3;
     width: 1024px;
     height: 50px;
-    left: 45.3%;
+    left: 49.4%;
     transform: translate(-50%,14%);
     }
     .menu ul li {
@@ -129,9 +129,13 @@ h5{
 }
 h5{
     position: absolute;
+    margin-top: -18px;
     color: white;
 }
-
+h3{
+    color: white;
+    margin-top: 100px;
+}
 </style>
 <body>
 <div class="top">
@@ -147,9 +151,11 @@ h5{
 <a href="sair.php" class="bnt-danger me-5">Sair</a>
 </div>
 <br>
+
 <?php
 echo "<h5> Bem Vindo <u>$logado</u></h5>";
 ?>
+
 <div class="menu">
     <ul>
         <li><a href="sistema.php">Home</a></li>
@@ -157,11 +163,11 @@ echo "<h5> Bem Vindo <u>$logado</u></h5>";
         <li><a href="formulario.php">Cadastrar Usuario</a></li>
         <li><a href="listap.php">Listar Usuarios</a></li>
         <li><a href="listam.php">Listar Médicos</a></li>
-        <li><a href="cadconsulta.php">Cadastrar Consulta</a></li>
         <li><a href="agendamento.php">Agendamento</a></li>
     </ul>
 
 </div>
 
+<h3>.'. . .' Banco de Dados '. . .'.</h3>
 </body>
 </html>

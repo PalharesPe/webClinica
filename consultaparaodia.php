@@ -1,13 +1,20 @@
 <?php
 include_once('config.php');
 
-$sql = "SELECT * FROM agendamento";
+$sql = "SELECT * FROM usuario";
+
+
+
 
 
 $result = $conexao->query($sql);
 
-?>
- 
+?>  
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +51,7 @@ margin-top: 20px;
     
 .menu {
     position: absolute;
-    margin-top: -43px;
+    margin-top: -389px;
     background-color: #1891a3;
     width: 1024px;
     height: 50px;
@@ -118,15 +125,32 @@ background-color: #c72e2e;
 </div>
 <a class="voltar" href="sistema.php">Voltar</a>
 <br><br>
-
+<div class="lista2" >
+        <table class="table">
+          <legend><b>Paciente </b></legend>
+    <tbody>
+    
+    <?php
+    
+        while($user_data = mysqli_fetch_assoc($result))
+        {
+        
+             echo "<tr>";  
+             echo "<td>".$user_data['nome']."</td>";
+                 
+             echo "</tr>";
+        }
+    ?>
+  </tbody>
+</table>
 <div class="lista" >
         <table class="table">
           <legend><b>Consulta Marcada </b></legend>
   <thead>
     
     <tr>
-        
-              
+      <th scope="col">Paciente</th>   
+      <th></th>         
       <th scope="col">Nome</th>
       <th></th>
       <th scope="col">Especialidade</th> 
@@ -144,7 +168,7 @@ background-color: #c72e2e;
         {
         
              echo "<tr>";               
-             echo "<td>DR ".$user_data['nome']."</td>";
+             echo "<td>".$user_data['nome']."</td>";
              echo "<td>"."</td>";
              echo "<td>".$user_data['especialidade']."</td>";             
              echo "<td>"."</td>";
